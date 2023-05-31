@@ -63,27 +63,34 @@ function getRandomNumber(max) {
 return Math.ceil(Math.random() * max);
 }
 
+function winnerBet () {
+    const bet = parseInt(betInput.value);
+    const initialBalance = parseInt(balance.innerHTML);
+    balance.innerHTML = initialBalance + (bet * 2);
+}
 
+function loserBet () {
+    const bet = parseInt(betInput.value);
+    const initialBalance = parseInt(balance.innerHTML);
+    balance.innerHTML = initialBalance - bet;
+}
 
+function updateBalance() {
+    const dice = parseInt(diceSelect.value);    
+    const randomNumber = getRandomNumber(6);
+    console.log(randomNumber);
+    if(dice === randomNumber) {
+        betMsg.innerHTML = `Has ganado el doble de lo apostado 😄`;
+        winnerBet();
+    } else {
+        betMsg.innerHTML = `Has perdido lo apostado 😫`;
+        loserBet();
+    }
+}
 
 function handleClick (ev) {
     ev.preventDefault();
-    const dice = parseInt(diceSelect.value);
-    const bet = parseInt(betInput.value);
-    const randomNumber = getRandomNumber(6);
-    console.log(randomNumber);
-    const initialBalance = parseInt(balance.innerHTML);
-    if(dice === randomNumber) {
-        betMsg.innerHTML = `Has ganado el doble de lo apostado 😄`;
-        balance.innerHTML = initialBalance + (bet * 2);
-    } else {
-        betMsg.innerHTML = `Has perdido lo apostado 😫`;
-        balance.innerHTML = initialBalance - bet;
-    }
-
-    if (balance.innerHTML <= 0) {
-        
-    }
+    updateBalance();
 };
 
 // EVENTO
