@@ -88,7 +88,7 @@ function loserBet () {
 
 function updateBalance() {
     const dice = parseInt(diceSelect.value);    
-    const randomNumber = getRandomNumber(1);
+    const randomNumber = getRandomNumber(6);
     console.log(randomNumber);
     if(dice === randomNumber) {
         betMsg.innerHTML = `Has ganado el doble de lo apostado 😄`;
