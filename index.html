@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Maria Sanchez">
+    <title>Ejercicio de Evaluación Intermedia</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <h1>Dados y Apuestas</h1>
+    <p>Introduce aquí tu jugada:</p>
+    <form action="">
+        <select class="js_dice" name="dice" id="dice">
+            <option value="1" class="dice">1</option>
+            <option value="2" class="dice">2</option>
+            <option value="3" class="dice">3</option>
+            <option value="4" class="dice">4</option>
+            <option value="5" class="dice">5</option>
+            <option value="6" class="dice">6</option>
+        </select>
+        <input class="js_bet" type="number" name="bet" id="bet" placeholder="¿Cuánto apuestas?">
+        <button class="js_play" type="submit">Jugar</button>
+    </form>
+    <h2 class="js_message">¡Vamos a jugar!</h2>
+    <div class="balance">
+        <span>Saldo: </span>
+        <span class="js_balance">50</span>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+</html>
