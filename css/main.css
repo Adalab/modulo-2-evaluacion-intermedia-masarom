@@ -6,8 +6,87 @@
 
 :root {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 62.5%;
 }
 
 .hidden {
     display: none;
+}
+
+.body {
+    background-color: #293d36;
+}
+.main {
+    text-align: center;
+    margin: auto;
+    margin-top: 25px;
+    width: 80vw;
+    border:5px solid #0C134F;
+    background-color:#cfdf7f;
+}
+
+.game__text {
+    padding: 10px 0;
+    color:#0C134F;
+    font-size: 1.7rem;
+}
+
+.game__text.title{
+    padding-top: 20px;
+    font-size: 2.9rem;
+}
+
+.form {
+    padding-bottom: 15px;
+}
+
+.form__object {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    padding: 5px 5px;
+    border: 2px solid #0C134F;
+    border-radius: 2px;
+}
+
+.form__object::placeholder {
+    color:#0C134F;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.submit {
+    color: white;
+    border: 2px solid #0C134F;
+    border-radius: 2px;
+    background-color: #0C134F;
+}
+
+.balance {
+    padding-top: 15px;
+}
+
+.hidden__message {
+    font-size: 1.4rem;
+    width: 85%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.hidden__message--text {
+    border: 2px solid #0C134F;
+    border-radius: 2px;
+    background-color: #0C134F;
+    color: white;
+    padding: 10px 5px;
+}
+
+.hidden__button {
+    margin: 15px 0;
+}
+
+@media all and (min-width:768px) {
+    .main {
+        margin-top: 150px;
+        max-width: 700px;
+    }
 }

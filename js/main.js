@@ -97,20 +97,20 @@ function updateBalance() {
         betMsg.innerHTML = `Has perdido lo apostado 😫`;
         loserBet();
     }
-    
 }
+
     //Bonus
 function endGame () {
-    console.log('Avengers, ¡Assemble!');
+    //console.log('Avengers, ¡Assemble!');
     if (balance.innerHTML >= 200) {
-        endGameMsg.innerHTML = `<p>¡Has ganado a la máquina! Recoge tu premio de ${balance.innerHTML} monedas.</p>`
+        endGameMsg.innerHTML = `<p class="hidden__message--text">¡Has ganado a la máquina! Recoge tu premio de ${balance.innerHTML} monedas.</p>`
     } else if (balance.innerHTML <= 0) {
-        endGameMsg.innerHTML = `¡Vaya! Te ha ganado la máquina. No te olvides de pasar por caja y pagarnos lo que nos debes 🙂`;
+        endGameMsg.innerHTML = `<p class="hidden__message--text">¡Vaya! Te ha ganado la máquina. No te olvides de pasar por caja y pagarnos lo que nos debes 🙂</p>`;
     }
 }
 
 function resetGameBtn() {
-    console.log('Thanos chasqueó los dedos');
+    //console.log('Thanos chasqueó los dedos');
     if (balance.innerHTML >=200) {
         resetBtn.classList.remove('hidden');
         playBtn.classList.add('hidden');
@@ -127,8 +127,6 @@ function handleClick (ev) {
     endGame();
     resetGameBtn();
 };
-
-
 
 // EVENTO
 playBtn.addEventListener('click', handleClick);
