@@ -1,53 +1,5 @@
 'use strict';
 
-/* HTML:
-    - select: dado
-    - input: apuesta
-    - button: Jugar
-    - Frase apuesta
-    - Saldo inicial/actual
-  
-   CSS:
-    - (No prioritario) Estilos:
-        - h1
-        - p
-        - Select dado
-        - Input apuesta 
-        - Button jugar
-        - Frase apuesta
-        - QSaldo inicial/actual
-
-   JS: 
-    - CQS: 
-        - Select
-        - Input
-        - Button Jugar
-        - Frase apuesta
-        - QSaldo
-    
-    - EVENTOS: 
-        - click en Jugar
-    
-    - FUNCIONES: 
-        - getRandomNumber
-
-        - EVENTO CLICK:
-            - Obtener value select
-            - Guardar el valor random en una variable
-            - Comparar value con getRandomNumber
-            - Cambiar frase apuesta con el resultado:
-                - Ganas: Has ganado...
-                - Pierdes: Has perdido...
-            
-            - Actualizar saldo:
-                - Tomar value del input apuesta
-                - Ganas: multiplica la apuesta * 2 y la suma a saldo
-                - Pierdes: Resta la apuesta a saldo.
-
-*/
-
-console.log('holi');
-
 // VARIABLES GLOBALES
 
 const diceSelect = document.querySelector('.js_dice');
@@ -65,9 +17,9 @@ const resetBtn = document.querySelector('.js_reset');
 function getRandomNumber(max) {
 return Math.ceil(Math.random() * max);
 }
-
+// correction: changing parseInt to parseFloat in bet
 function winnerBet () {
-    let bet = parseInt(betInput.value);
+    let bet = parseFloat(betInput.value);
     const initialBalance = parseInt(balance.innerHTML);
     if (isNaN(bet)) { 
         bet = 0;
@@ -77,7 +29,7 @@ function winnerBet () {
 }
 
 function loserBet () {
-    const bet = parseInt(betInput.value);
+    const bet = parseFloat(betInput.value);
     const initialBalance = parseInt(balance.innerHTML);
     if (isNaN(bet)) { 
         bet = 0;
@@ -101,7 +53,6 @@ function updateBalance() {
 
     //Bonus
 function endGame () {
-    //console.log('Avengers, ¡Assemble!');
     if (balance.innerHTML >= 200) {
         endGameMsg.innerHTML = `<p class="hidden__message--text">¡Has ganado a la máquina! Recoge tu premio de ${balance.innerHTML} monedas.</p>`
     } else if (balance.innerHTML <= 0) {
@@ -110,15 +61,17 @@ function endGame () {
 }
 
 function resetGameBtn() {
-    //console.log('Thanos chasqueó los dedos');
     if (balance.innerHTML >=200) {
         resetBtn.classList.remove('hidden');
         playBtn.classList.add('hidden');
     }
 }
-
+// correction: change window reload to default values
 function handleclickReset(ev) {
-    window.location.reload();
+    diceSelect.value = 'number';
+    betInput.value = '';
+    balance.innerHTML = '50';
+    endGameMsg.innerHTML = '';
 }
 
 function handleClick (ev) {
