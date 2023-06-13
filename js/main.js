@@ -7,6 +7,8 @@ const betInput = document.querySelector('.js_bet');
 const playBtn = document.querySelector('.js_play');
 const betMsg = document.querySelector('.js_message');
 const balance = document.querySelector('.js_balance');
+    // correction: use a global variable to store user balance
+let userBalance = 50;
 
     // Bonus
 const endGameMsg = document.querySelector('.js_endgame');
@@ -26,22 +28,22 @@ function writeHTML (el, string){
 // correction: changing parseInt to parseFloat in bet
 function winnerBet () {
     let bet = parseFloat(betInput.value);
-    const initialBalance = parseInt(balance.innerHTML);
     if (isNaN(bet)) { 
         bet = 0;
         writeHTML(betMsg, `Tienes que introducir una apuesta`);
     };
-    balance.innerHTML = initialBalance + (bet * 2);
+    userBalance = userBalance + (bet * 2);
+    balance.innerHTML = userBalance;
 }
 
 function loserBet () {
     let bet = parseFloat(betInput.value);
-    const initialBalance = parseInt(balance.innerHTML);
     if (isNaN(bet)) { 
         bet = 0;
         writeHTML(betMsg, `Tienes que introducir una apuesta`);
     };
-    balance.innerHTML = initialBalance - bet;
+    userBalance = userBalance - bet;
+    balance.innerHTML = userBalance;
 }
 
 function updateBalance() {
