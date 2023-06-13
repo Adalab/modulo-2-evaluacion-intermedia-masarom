@@ -17,23 +17,29 @@ const resetBtn = document.querySelector('.js_reset');
 function getRandomNumber(max) {
 return Math.ceil(Math.random() * max);
 }
+
+// correction: use a function to simplify innerHTML code
+function writeHTML (el, string){
+    return el.innerHTML = string;
+}
+
 // correction: changing parseInt to parseFloat in bet
 function winnerBet () {
     let bet = parseFloat(betInput.value);
     const initialBalance = parseInt(balance.innerHTML);
     if (isNaN(bet)) { 
         bet = 0;
-        betMsg.innerHTML = `Tienes que introducir una apuesta`;
+        writeHTML(betMsg, `Tienes que introducir una apuesta`);
     };
     balance.innerHTML = initialBalance + (bet * 2);
 }
 
 function loserBet () {
-    const bet = parseFloat(betInput.value);
+    let bet = parseFloat(betInput.value);
     const initialBalance = parseInt(balance.innerHTML);
     if (isNaN(bet)) { 
         bet = 0;
-        betMsg.innerHTML = `Tienes que introducir una apuesta`;
+        writeHTML(betMsg, `Tienes que introducir una apuesta`);
     };
     balance.innerHTML = initialBalance - bet;
 }
@@ -43,10 +49,10 @@ function updateBalance() {
     const randomNumber = getRandomNumber(6);
     console.log(randomNumber);
     if(dice === randomNumber) {
-        betMsg.innerHTML = `Has ganado el doble de lo apostado 😄`;
+        writeHTML(betMsg, `Has ganado el doble de lo apostado 😄`);
         winnerBet();
     } else {
-        betMsg.innerHTML = `Has perdido lo apostado 😫`;
+        writeHTML(betMsg, `Has perdido lo apostado 😫`);
         loserBet();
     }
 }
@@ -54,9 +60,15 @@ function updateBalance() {
     //Bonus
 function endGame () {
     if (balance.innerHTML >= 200) {
-        endGameMsg.innerHTML = `<p class="hidden__message--text">¡Has ganado a la máquina! Recoge tu premio de ${balance.innerHTML} monedas.</p>`
+        writeHTML(
+          endGameMsg,
+          `<p class="hidden__message--text">¡Has ganado a la máquina! Recoge tu premio de ${balance.innerHTML} monedas.</p>`
+        );
     } else if (balance.innerHTML <= 0) {
-        endGameMsg.innerHTML = `<p class="hidden__message--text">¡Vaya! Te ha ganado la máquina. No te olvides de pasar por caja y pagarnos lo que nos debes 🙂</p>`;
+        writeHTML(
+          endGameMsg,
+          `<p class="hidden__message--text">¡Vaya! Te ha ganado la máquina. No te olvides de pasar por caja y pagarnos lo que nos debes 🙂</p>`
+        );
     }
 }
 
@@ -72,6 +84,8 @@ function handleclickReset(ev) {
     betInput.value = '';
     balance.innerHTML = '50';
     endGameMsg.innerHTML = '';
+    playBtn.classList.remove('hidden');
+    resetBtn.classList.add('hidden');
 }
 
 function handleClick (ev) {
